@@ -41,7 +41,7 @@ class ArticleDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ArticleDetailView, self).get_context_data()
         article = kwargs.get('object')
-        context['comments'] = ArticleComment.objects.filter(article_id=article.id)
+        context['comments'] = ArticleComment.objects.filter(article_id=article.id,parent=None).prefetch_related('articlecomment_set')
         return context
 
 
