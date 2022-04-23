@@ -1,4 +1,4 @@
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
@@ -54,3 +54,8 @@ def article_categories_partial(request: HttpRequest):
         'main_categorys': article_main_categorys
     }
     return render(request, 'article_module/partiaals/article_category_partial.html', context)
+
+
+def AddArticleComment(request: HttpRequest):
+    print(request.GET)
+    return HttpResponse("hellow")
