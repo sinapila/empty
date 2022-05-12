@@ -57,5 +57,11 @@ def article_categories_partial(request: HttpRequest):
 
 
 def AddArticleComment(request: HttpRequest):
-    print(request.GET)
+    if request.user.is_authenticated:
+        article_id = request.GET.get('articleid')
+        article_comment = request.GET.get('comment')
+        parent_id = request.GET.get('parentid')
+        print(article_id,article_comment,parent_id)
+        new_commant = ArticleComment(article_id=article_id,text=article_comment,user_id=request.user.id)
+        new_commant.save()
     return HttpResponse("hellow")
