@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class UserPanelModuleConfig(AppConfig):
+class UserModuleConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'user_panel_module'
+    name = 'user_module'
