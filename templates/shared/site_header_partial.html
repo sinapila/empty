@@ -50,7 +50,7 @@
                                     {% if request.user.is_superuser %}
                                     <li><a href="/admin"><i class="fa fa-user"></i> پنل مدیریت</a></li>
                                     {% else %}
-                                        <li><a href="#"><i class="fa fa-user"></i> پنل کاربری</a></li>
+                                        <li><a href="/user"><i class="fa fa-user"></i> پنل کاربری</a></li>
                                     {% endif %}
 
                                     <li><a href="{% url 'logout_page' %}"><i class="fa fa-sign-out"></i> خروج از حساب کاربری</a></li>

@@ -1,0 +1,42 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+
+{% block title %}
+    change passworld
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                {% render_partial 'user_module.views.user_panel_menu_component' %}
+            </div>
+
+            <div class="col-md-8">
+                {% if form.errors %}
+                    {% for field in form.fields %}
+                        {% for error in field.error %}
+                            <div class="alert alert-danger">
+                            {{ error|escape }}
+                            </div>
+                        
+                        {% endfor %}
+                        
+
+                    {% endfor %}
+
+
+                {% endif %}
+                <form action="{% url 'change_passworld_page' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="form-group col-md-12">
+                        {% comment %}<input type="submit" name="submit" class="btn btn-primary pull-right" value="ارسـال">{% endcomment %}
+                        <button type="submit" class="btn btn-primary pull-right">ارسال</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
