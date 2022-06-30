@@ -52,7 +52,7 @@ class ArticleDetailView(DetailView):
 
 
 def article_categories_partial(request: HttpRequest):
-    article_main_categorys = ArticleCategory.objects.filter(is_active=True, parent_id=None)
+    article_main_categorys = ArticleCategory.objects.prefetch_related('articlecategory_set').filter(is_active=True, parent_id=None)
     context = {
         'main_categorys': article_main_categorys
     }

@@ -59,3 +59,4 @@ class ChangePassworldPage(View):
 
 def user_panel_menu_component(request: HttpRequest):
     return render(request=request, template_name='user_module/components/user_panel_menu_component.html')
+

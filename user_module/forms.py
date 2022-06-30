@@ -41,9 +41,9 @@ class ChangePasswordForm(forms.Form):
     current_password = forms.CharField(
         label='کلمه عبور فعلی',
         widget=forms.PasswordInput(
-            attrs={
-                'class':'form-control'
-            }
+            # attrs={
+            #     'class':'form-control'
+            # }
         ),
         validators=[
             validators.MaxLengthValidator(100),
@@ -52,9 +52,9 @@ class ChangePasswordForm(forms.Form):
     password = forms.CharField(
         label='کلمه عبور',
         widget=forms.PasswordInput(
-            attrs={
-                'class':'form-control'
-            }
+            # attrs={
+            #     'class':'form-control'
+            # }
         ),
         validators=[
             validators.MaxLengthValidator(100),
@@ -63,9 +63,9 @@ class ChangePasswordForm(forms.Form):
     confirm_password = forms.CharField(
         label='تکرار کلمه عبور',
         widget=forms.PasswordInput(
-            attrs={
-                'class':'form-control'
-            }
+            # attrs={
+            #     'class':'form-control'
+            # }
         ),
         validators=[
             validators.MaxLengthValidator(100),
