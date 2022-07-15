@@ -33,6 +33,7 @@ class FooterLinkBox(models.Model):
     def __str__(self):
         return self.title
 
+
 class FooterLink(models.Model):
     title = models.CharField(max_length=202, verbose_name='عنوان')
     url = models.URLField(max_length=500, verbose_name='لینک')
@@ -44,6 +45,7 @@ class FooterLink(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Slider(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
@@ -59,3 +61,29 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class SiteBanner(models.Model):
+    class SiteBannerPositions(models.TextChoices):
+        product_list = ("product_list", "صفحه لیست محصولات")
+
+        product_detail = ("product_detail", "صفحه جزییات محصولات")
+
+        article_page = ("article_page", "صفحه لیست مقالات")
+        article_detail_page = ("article_detail_page", "صفحه مقاله")
+
+        about_us = ('about_us', 'صفحه درباره ما')
+
+    title = models.CharField(max_length=200, verbose_name='عنوان')
+    url = models.URLField(max_length=200, null=True, blank=True, verbose_name='url')
+    image = models.ImageField(upload_to='images/banner', verbose_name='تصویر')
+    is_active = models.BooleanField(default=True, verbose_name='فعال / غیر فعال')
+    position = models.CharField(max_length=200, choices=SiteBannerPositions.choices, verbose_name='محل قرار گیری')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'بنر تبلیاتی'
+
+        verbose_name_plural = 'بنر هی تبلیغاتی'

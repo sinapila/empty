@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.utils.text import slugify
 
 
 # Create your models here.
@@ -38,12 +37,13 @@ class Product(models.Model):
         ProductCategory,
         related_name='product_categories',
         verbose_name='دسته بندی ها')
-    image = models.ImageField(upload_to='images/products' , null=True , blank=True, verbose_name='تصویر مصول')
+    image = models.ImageField(upload_to='images/products', null=True, blank=True, verbose_name='تصویر مصول')
     price = models.IntegerField(verbose_name='قیمت')
     brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE, verbose_name='برند', null=True)
     short_description = models.CharField(max_length=360, db_index=True, null=True, verbose_name='توضیحات کوتاه')
     description = models.TextField(verbose_name='توضیحات اصلی', db_index=True)
-    slug = models.SlugField(default="", null=False, db_index=True, blank=True, max_length=200, unique=True, verbose_name='عنوان url')
+    slug = models.SlugField(default="", null=False, db_index=True, blank=True, max_length=200, unique=True,
+                            verbose_name='عنوان url')
     is_active = models.BooleanField(default=False, verbose_name='فعال / غیرفعال')
     is_delete = models.BooleanField(verbose_name='حذف شده / نشده')
 
@@ -73,3 +73,12 @@ class ProductTag(models.Model):
     def __str__(self):
         return self.caption
 
+
+class ProductAccount(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=300, db_index=True, verbose_name='نام کاربری')
+    passworld = models.CharField(max_length=300, db_index=True, verbose_name='پسورد')
+    email = models.CharField(max_length=300, db_index=True, verbose_name='ایمیل')
+    ramz = models.CharField(max_length=300, db_index=True, verbose_name='رمز بازی (اضافه))')
+    is_active = models.BooleanField(verbose_name='فعال / غیرفعال')
+    is_delete = models.BooleanField(verbose_name='حذف شده / نشده')

@@ -8,12 +8,20 @@ from .models import *
 class FooterLinkAdmin(admin.ModelAdmin):
     list_display = ['title', 'url']
 
+
 class SliderAdmin(admin.ModelAdmin):
-    list_display = ['title', 'url','is_active']
-    list_editable = ['url','is_active']
+    list_display = ['title', 'url', 'is_active']
+    list_editable = ['url', 'is_active']
 
 
-admin.site.register(SiteSetting)
-admin.site.register(FooterLink, FooterLinkAdmin)
-admin.site.register(FooterLinkBox)
-admin.site.register(Slider, SliderAdmin)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ['title', 'url', 'position']
+
+
+reg = admin.site.register
+
+reg(SiteSetting)
+reg(FooterLink, FooterLinkAdmin)
+reg(FooterLinkBox)
+reg(Slider, SliderAdmin)
+reg(SiteBanner, BannerAdmin)
